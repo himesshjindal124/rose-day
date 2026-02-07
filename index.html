@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Geetika 🌹</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  height:100vh;
+  background: linear-gradient(120deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  overflow:hidden;
+}
+
+.box{
+  background:white;
+  padding:30px;
+  border-radius:20px;
+  width:90%;
+  max-width:420px;
+  text-align:center;
+  box-shadow:0 15px 40px rgba(0,0,0,0.3);
+  z-index:2;
+}
+
+h1,h2{
+  color:#e91e63;
+}
+
+input{
+  width:80%;
+  padding:10px;
+  border-radius:10px;
+  border:1px solid #ccc;
+  font-size:16px;
+}
+
+button{
+  padding:12px 22px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.yes{
+  background:#e91e63;
+  color:white;
+}
+
+.no{
+  background:#ddd;
+  position:absolute;
+}
+
+.error{
+  color:red;
+  margin-top:10px;
+}
+
+/* Photo styling */
+.photo{
+  width:140px;
+  height:140px;
+  border-radius:50%;
+  object-fit:cover;
+  margin:15px auto;
+  border:4px solid #e91e63;
+  box-shadow:0 0 20px rgba(233,30,99,0.6);
+}
+
+/* Floating roses */
+.rose{
+  position:absolute;
+  font-size:24px;
+  animation: float 8s linear infinite;
+  opacity:0.8;
+}
+
+@keyframes float{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio autoplay loop>
+  <source src="https://www.chosic.com/wp-content/uploads/2021/04/Perfect.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Page 1 -->
+<div class="box" id="page1">
+  <h1>Hey ❤️</h1>
+  <p>This site is only for someone very special 🌸</p><br>
+  <input type="text" id="nameInput" placeholder="Enter your name">
+  <br><br>
+  <button class="yes" onclick="checkName()">Continue</button>
+  <div class="error" id="error"></div>
+</div>
+
+<!-- Page 2 -->
+<div class="box" id="page2" style="display:none;">
+  <img src="geetika.jpg" alt="Geetika" class="photo"
+       onerror="this.style.display='none'">
+  <h2>For you Geetika 🌹</h2>
+  <p>Will you accept this rose and become my favourite person? 😘</p><br>
+  <button class="yes" id="yesBtn" onclick="goNext()">YES 💖</button>
+  <button class="no" id="noBtn" onmouseover="moveNo()">NO 🙄</button>
+</div>
+
+<!-- Page 3 -->
+<div class="box" id="page3" style="display:none;">
+  <img src="geetika.jpg" alt="Geetika" class="photo"
+       onerror="this.style.display='none'">
+  <h1>Happy Rose Day Gubare 😘❤️</h1><br>
+  <p>
+    haa vi bnadi mene vi site leh hogi khush 😂😘😘<br><br>
+    love u re kuiya 💕<br>
+    hawa m na udna ab 😌
+  </p>
+</div>
+
+<script>
+function checkName(){
+  const name = nameInput.value.toLowerCase().trim();
+  if(name==="geetika" || name==="geetika bansal"){
+    page1.style.display="none";
+    page2.style.display="block";
+    centerNo();
+  } else {
+    error.innerText="Oops! This site is not for you 😌";
+  }
+}
+
+let yesSize=16;
+function moveNo(){
+  noBtn.style.left=Math.random()*(window.innerWidth-100)+"px";
+  noBtn.style.top=Math.random()*(window.innerHeight-50)+"px";
+  yesSize+=6;
+  yesBtn.style.fontSize=yesSize+"px";
+  yesBtn.style.padding=(yesSize/2)+"px";
+}
+
+function centerNo(){
+  noBtn.style.left="50%";
+  noBtn.style.top="70%";
+  noBtn.style.transform="translate(-50%,-50%)";
+}
+
+function goNext(){
+  page2.style.display="none";
+  page3.style.display="block";
+}
+
+/* Floating roses */
+for(let i=0;i<15;i++){
+  let r=document.createElement("div");
+  r.className="rose";
+  r.innerHTML="🌹";
+  r.style.left=Math.random()*100+"vw";
+  r.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(r);
+}
+</script>
+
+</body>
+</html>
